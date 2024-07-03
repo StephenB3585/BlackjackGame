@@ -1,6 +1,7 @@
 #include "Deck.hpp"
 #include <algorithm>
 #include <random>
+#include <chrono>
 
 static const Suit STANDARD_SUIT_LIST[] = { Heart, Spade, Diamond, Club };
 
@@ -61,11 +62,22 @@ void Deck::resetBaseDeck()
 void Deck::shuffle()
 {
 	auto rng = std::default_random_engine{};
+	// make sure the RNG is seeded
+	rng.seed(std::chrono::system_clock::now().time_since_epoch().count());
 	std::shuffle(std::begin(m_cards), std::end(m_cards), rng);
 }
 unsigned int Deck::getDeckSize()
 {
 	return m_cards.size();
+}
+std::string Deck::toString()
+{
+	std::string return_string;
+	for (int i = 0; i < m_cards.size(); i++)
+	{
+		return_string += m_cards[i].toString() + "\n";
+	}
+	return return_string;
 }
 Deck Deck::operator+(Card card)
 {
