@@ -27,6 +27,9 @@ int main()
 	bool done = false;
 	while (!done)
 	{
+		player.resetPlayer();
+		dealer.resetPlayer();
+		deck.resetDeck();
 		deck.shuffle();
 
 		std::cout << "Time to play blackjack!" << std::endl << std::endl;
@@ -108,9 +111,6 @@ int main()
 			std::cin >> play_again_string;
 			if (!play_again_string.compare(CONTINUE_GAME_STRING))
 			{
-				player.resetPlayer();
-				dealer.resetPlayer();
-				deck.resetDeck();
 				valid_end_game = true;
 			}
 			else if (!play_again_string.compare(END_GAME_STRING))
