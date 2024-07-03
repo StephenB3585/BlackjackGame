@@ -58,6 +58,11 @@ std::string BlackjackPlayer::toString()
 	return m_hand.toString();
 }
 
+std::string BlackjackPlayer::scoreToString()
+{
+	return m_hand.scoresToString();
+}
+
 void BlackjackPlayer::resetPlayer()
 {
 	m_has_standed = false;

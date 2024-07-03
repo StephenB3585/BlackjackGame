@@ -17,6 +17,7 @@ public:
 	BlackjackHand getHand();
 	unsigned int getMaxScore();
 	std::string toString();
+	std::string scoreToString();
 	void resetPlayer();
 private:
 	BlackjackHand m_hand;

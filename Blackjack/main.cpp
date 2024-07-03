@@ -1,18 +1,39 @@
 #include "Card.hpp"
 #include "Deck.hpp"
-#include "BlackjackHand.hpp"
+#include "BlackjackPlayer.hpp"
 #include <iostream>
 #include <string>
 
 
 int main()
 {
-	Card card1(Spade, 'A');
-	Card card2(Heart, 'A');
-	BlackjackHand hand;
-	hand += card1;
-	hand += card2;
-	std::cout << "Hand: " << std::endl << hand.toString() << std::endl << "Score = " << hand.scoresToString() << std::endl;
+	Deck deck;
+	// we need 6 standard decks for Blackjack
+	for (int i = 0; i < 5; i++)
+	{
+		deck += Deck();
+	}
+	// make sure the base deck is our standard blackjack 6 decks
+	deck.resetBaseDeck();
+	BlackjackPlayer dealer;
+	BlackjackPlayer player;
+	bool done = false;
+	while (!done)
+	{
+		deck.shuffle();
+
+		std::cout << "Time to play blackjack!" << std::endl << std::endl;
+		player.hit(&deck);
+		dealer.hit(&deck);
+		player.hit(&deck);
+		dealer.hit(&deck);
+		std::cout << "Dealer Hand: " << std::endl << dealer.toString() << std::endl;
+		std::cout << "Dealer Score: " << dealer.scoreToString() << std::endl;
+		std::cout << std::endl;
+		std::cout << "Your Hand: " << std::endl << player.toString() << std::endl;
+		std::cout << "Your Score: " << player.scoreToString() << std::endl;
+		done = true;
+	}
 	return 0;
 }
 
