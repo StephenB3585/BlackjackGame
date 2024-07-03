@@ -70,6 +70,15 @@ unsigned int Deck::getDeckSize()
 {
 	return m_cards.size();
 }
+std::string Deck::toString()
+{
+	std::string return_string;
+	for (int i = 0; i < m_cards.size(); i++)
+	{
+		return_string += m_cards[i].toString() + "\n";
+	}
+	return return_string;
+}
 Deck Deck::operator+(Card card)
 {
 	Deck deck = *this;

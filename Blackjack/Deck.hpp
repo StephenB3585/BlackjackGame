@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 #include "Card.hpp"
 class Deck
 {
@@ -16,6 +17,7 @@ public:
 	void resetDeck();
 	void resetBaseDeck();
 	unsigned int getDeckSize();
+	std::string toString();
 	Deck operator+(Card card);
 	Deck operator+(Deck deck);
 	void operator+=(Card card);
